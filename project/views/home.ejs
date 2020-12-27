@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <a href="/create">Create</a><br>
+        <form action="/search" method="post" enctype="multipart/form-data" >
+            Restaurant Name: <input type="text" name="search"> </textarea>    
+            <br>
+    <input type="submit" value="search" class="submitButton">
+    </form>
+
+        <H2>Restaurant (<%= nRestaurants %>)</H2>
+        <ul>
+            <% for (var b of restaurants) { %>
+            <li>Restaurant Name: <a href="/details?_id=<%= b._id %>"><%= b.name %></a></li>
+            <% } %>
+        </ul>
+    </body>
+</html>

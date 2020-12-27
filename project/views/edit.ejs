@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <form action="/update" method="POST" enctype="multipart/form-data">
+            restaurant name: <input name="name" value=<%= restaurants.name %>><br>
+            Borough: <input name="borough" value=<%= restaurants.borough %>><br>
+            Cuisine: <input name="cuisine" value=<%= restaurants.cuisine %>><br>
+            Street: <input name="street" value=<%= restaurants.address.street %>><br>
+            Buliding: <input name="building" value=<%= restaurants.address.building %>><br>
+            Zipcode: <input name="zipcode" value=<%= restaurants.address.zipcode %>><br>
+            GPS Coordinates(lon.): <input name="lon" value=<%= restaurants.address.coord.lon %>><br>
+            GPS Coordinates(lat.): <input name="lat" value=<%= restaurants.address.coord.lat %>><br>
+       
+           
+            <input type="file" name="filetoupload"><br>
+            <input type="hidden" name="_id" value=<%= restaurants._id %>>
+            <input type="submit" value="update">  
+        </form>
+    </body>
+</html>

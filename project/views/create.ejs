@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <form action="/add" method="POST" enctype="multipart/form-data">
+
+            restaurant name: <input name="name" required ><br>
+            Borough: <input type="text" name="borough" ><br>
+            Cuisine: <input type="text" name="cuisine" ><br>
+            Street: <input type="text" name="street" ><br>
+            Buliding: <input type="text" name="building" ><br>
+            Zipcode: <input type="text" name="zipcode" ><br>
+            GPS Coordinates(lon.): <input type="text" name="lon" ><br>
+            GPS Coordinates(lat.): <input type="text" name="lat" ><br>
+            Owner : <input type="text" name="user" required  value= <%= u %> ><br>
+            Score : <input type="number" name="score" min="0" max="10" ><br>
+          
+            <input type="hidden" name="_id" >
+            
+            Photo: <input type="file" name="filetoupload"><br>
+           
+            <input type="submit" value="create">  
+        </form>
+    </body>
+</html>

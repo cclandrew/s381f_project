@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <form action="/addscore" method="POST" enctype="multipart/form-data">
+
+            Score : <input type="number" name="score" min="0" max="10" value=<%= restaurants.grades.score %>><br>
+            Your user name:<input type="text" name="name" >
+            <input type="hidden" name="_id" value=<%= restaurants._id %>>          
+            Photo: <input type="file" name="filetoupload"><br>
+           
+            <input type="submit" value="add score">  
+        </form>
+    </body>
+</html>
