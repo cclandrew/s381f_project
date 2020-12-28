@@ -30,7 +30,7 @@
 
         <p>Owner: <%= restaurants.owner %></p>
 
-        <a href="/map?lon=<%= restaurants.address.coord.lon %>&lat=<%= restaurants.address.coord.lat%>">Map</a><br>
+        <a href="/map?_id=<%= restaurants._id%>">Map</a><br>
     
         <a href="/edit?_id=<%= restaurants._id %>">edit</a><br>
         <a href="/delete?_id=<%= restaurants._id %>">Delete</a><br>

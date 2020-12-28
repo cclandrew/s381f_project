@@ -15,10 +15,10 @@
       <script>
          // Creating map options
          var mapOptions = {
-            center: [<%=lat%>,<%=lon%>],
+            center: [<%= restaurants.address.coord.lon%>, <%= restaurants.address.coord.lat %>],
             zoom: <%=zoom =15%>
          }
-         
+
          // Creating a map object
          var map = new L.map('map', mapOptions);
          
@@ -28,10 +28,11 @@
          // Adding layer to the map
          map.addLayer(layer);
          // Creating a marker
-         var marker = L.marker([<%=lat%>,<%=lon%>]);
+         var marker = L.marker([<%=restaurants.address.coord.lat%>,<%=restaurants.address.coord.lon%>]);
          // Adding marker to the map
          marker.addTo(map);
       </script>
+               <p>GPS: <%= restaurants.address.coord.lon%>, <%= restaurants.address.coord.lat %></p>
    </body>
    
 </html>

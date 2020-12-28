@@ -10,8 +10,8 @@ const fs = require('fs');
 const formidableMiddleware = require('express-formidable');
 const { Router } = require('express');
 //const { Long } = require('mongodb');
-const mongourl = '';
-const dbName = '';
+const mongourl = 'mongodb+srv://Demo:5399@cluster0.qfbxo.mongodb.net/Demo?retryWrites=true&w=majority';
+const dbName = 'Demo';
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' })
 
@@ -318,6 +318,24 @@ const handle_Delete = (req, res, criteria) => {
     });
 
 
+const handle_map = (res, criteria) => {
+    const client = new MongoClient(mongourl);
+    client.connect((err) => {
+        assert.equal(null, err);
+        console.log("Connected successfully to server");
+        const db = client.db(dbName);
+
+        /* use Document ID for query */
+        let DOCID = {};
+        DOCID['_id'] = ObjectID(criteria._id)
+        findDocument(db, DOCID, (docs) => {  // docs contain 1 document (hopefully)
+            client.close();
+            console.log("Closed DB connection");
+            res.status(200).render('map', {restaurants: docs[0]});
+        });
+    });
+}
+
 app.get('/', (req,res) => {
 	console.log(req.session);
 	if (!req.session.authenticated) {    // user not logged in!
@@ -328,12 +346,7 @@ app.get('/', (req,res) => {
 });
 
 app.get("/map", (req,res) => {
-	res.render("map.ejs", {
-		lat:req.query.lat,
-		lon:req.query.lon,
-		zoom:req.query.zoom ? req.query.zoom : 15
-	});
-	res.end();
+    handle_map(res, req.query);
 });
 
 app.post('/search', (req,res) => {
@@ -353,6 +366,11 @@ app.post('/search', (req,res) => {
         }
     });   
 });
+
+app.get("/map", (req,res) => {
+    handle_map(res, req.query);
+});
+
 
 app.get('/home', (req,res) => {
     handle_Find(res, req.query.docs,req.query);
