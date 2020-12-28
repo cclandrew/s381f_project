@@ -10,8 +10,8 @@ const fs = require('fs');
 const formidableMiddleware = require('express-formidable');
 const { Router } = require('express');
 //const { Long } = require('mongodb');
-const mongourl = 'mongodb+srv://Demo:5399@cluster0.qfbxo.mongodb.net/Demo?retryWrites=true&w=majority';
-const dbName = 'Demo';
+const mongourl = '';
+const dbName = '';
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' })
 
