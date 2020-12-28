@@ -29,7 +29,12 @@ const users = new Array(
 app.use(session({
     name: 'loginSession',
     keys: [SECRETKEY]
-  }));
+}));
+
+app.use(function(req, res, next) {
+    res.locals.username = req.session.username;
+    next();
+});
 
 // support parsing of application/json type post data
 app.use(formidableMiddleware());
@@ -459,7 +464,7 @@ app.post('/api/restaurants/:name', (req,res) => {
 })
 
 /* READ
-curl -X GET http://localhost:8099/api/restaurants/hi
+curl -X GET http://localhost:8099/api/restaurants/:name
 */
 app.get('/api/restaurants/:name', (req,res) => {
     if (req.params.name) {

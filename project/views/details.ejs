@@ -30,10 +30,17 @@
 
         <p>Owner: <%= restaurants.owner %></p>
 
+        <p>username: <%= username %></p>
+
+        <% if (username == restaurants.owner) { %>
+            <a href="/edit?_id=<%= restaurants._id %>">Edit</a><br>
+            <a href="/delete?_id=<%= restaurants._id %>">Delete</a><br>
+        <% } else { %>
+            <p>you are not the owner therefore cannot edit/delete</p>
+        <% } %>
+
         <a href="/map?_id=<%= restaurants._id%>">Map</a><br>
-    
-        <a href="/edit?_id=<%= restaurants._id %>">edit</a><br>
-        <a href="/delete?_id=<%= restaurants._id %>">Delete</a><br>
+        
         <a href="/rate?_id=<%= restaurants._id %>">Rate</a><br>
 
         <a href="/home">home</a>
